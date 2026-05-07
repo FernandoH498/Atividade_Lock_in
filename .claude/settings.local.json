@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(dir \"C:\\\\Program Files\\\\MySQL\")",
+      "Bash(dir \"C:\\\\xampp\\\\mysql\\\\bin\")",
+      "Bash(java -version)",
+      "Bash(mvn -version)",
+      "PowerShell(java *)",
+      "PowerShell(winget *)",
+      "PowerShell(javac *)",
+      "PowerShell(& \"C:\\\\tomcat\\\\apache-tomcat-9.0.117\\\\bin\\\\startup.bat\")",
+      "PowerShell(Get-Content *)",
+      "PowerShell(netstat *)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "WebFetch(domain:github.com)",
+      "PowerShell(git clone https://github.com/nextlevelbuilder/ui-ux-pro-max-skill.git \"$env:TEMP\\\\ui-ux-pro-max-skill\" 2>&1)"
+    ]
+  }
+}

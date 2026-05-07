@@ -1,0 +1,3 @@
+db.url=jdbc:mysql://localhost:3306/achados_perdidos?useSSL=false&serverTimezone=America/Sao_Paulo&characterEncoding=UTF-8&allowPublicKeyRetrieval=true
+db.user=SEU_USUARIO
+db.password=SUA_SENHA
