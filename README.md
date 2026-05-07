@@ -1,5 +1,6 @@
-# Achados & Perdidos — SESI Blumenau
+# Achados & Perdidos — Equipe Lock in
 
+Integrantes: Fernando Harmel, Arthur Ayyub, Arthur Krebs, Larissa, Victor Prim
 Sistema simulado de gestão de itens achados e perdidos — Hackathon Técnico SESI, v0.1.
 
 ---
