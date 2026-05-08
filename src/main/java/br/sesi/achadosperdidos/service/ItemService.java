@@ -40,6 +40,10 @@ public class ItemService {
         dao.updateStatus(id, "DEVOLVIDO");
     }
 
+    public void excluirItem(int id) throws SQLException {
+        dao.delete(id);
+    }
+
     public boolean isExtensaoImagemValida(String nomeArquivo) {
         if (nomeArquivo == null || nomeArquivo.isBlank()) return false;
         String lower = nomeArquivo.toLowerCase();
