@@ -91,6 +91,15 @@ public class ItemDAO {
         }
     }
 
+    public void delete(int id) throws SQLException {
+        String sql = "DELETE FROM itens WHERE id = ?";
+        try (Connection conn = ConnectionFactory.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setInt(1, id);
+            ps.executeUpdate();
+        }
+    }
+
     private Item mapRow(ResultSet rs) throws SQLException {
         Item item = new Item();
         item.setId(rs.getInt("id"));

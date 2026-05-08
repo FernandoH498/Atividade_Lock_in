@@ -162,17 +162,12 @@
                             </div>
                         </div>
 
-                        <c:if test="${item.status == 'ACHADO'}">
-                            <div class="item-card-footer">
-                                <form method="post"
-                                      action="${pageContext.request.contextPath}/itens/devolver">
-                                    <input type="hidden" name="id" value="${item.id}">
-                                    <button type="submit" class="btn btn-success btn-sm btn-full">
-                                        &#10003; Marcar como Devolvido
-                                    </button>
-                                </form>
-                            </div>
-                        </c:if>
+                        <div class="item-card-footer">
+                            <a href="${pageContext.request.contextPath}/itens/detalhe?id=${item.id}"
+                               class="btn btn-secondary btn-sm btn-full">
+                                &#128269; Ver Detalhes
+                            </a>
+                        </div>
 
                     </article>
                 </c:forEach>

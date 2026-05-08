@@ -19,6 +19,6 @@ CREATE TABLE IF NOT EXISTS itens (
     status           ENUM('ACHADO','DEVOLVIDO') NOT NULL DEFAULT 'ACHADO',
     data_cadastro    DATETIME      NOT NULL DEFAULT CURRENT_TIMESTAMP,
     observacoes      TEXT,
-    foto_path VARCHAR(255) NULL
+    foto_path VARCHAR(255) NULL,
     PRIMARY KEY (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
