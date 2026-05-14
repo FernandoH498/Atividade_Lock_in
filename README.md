@@ -36,16 +36,9 @@
 
 ---
 
-## Passo 1 — Clonar ou Baixar o Projeto
+## Passo 1 — Baixar o Projeto
 
-### Opção A — Clonar via Eclipse
-
-1. Abra o Eclipse → menu **File → Import**
-2. Escolha **Git → Projects from Git → Clone URI**
-3. Cole a URL do repositório GitHub e clique em **Next**
-4. Selecione a branch `main` e conclua o assistente
-
-### Opção B — Baixar o ZIP
+### Baixar o ZIP
 
 1. Acesse o repositório no GitHub
 2. Clique em **Code → Download ZIP**
