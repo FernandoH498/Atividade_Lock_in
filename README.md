@@ -6,7 +6,7 @@
 
 Substitua `SEU_USUARIO_GITHUB` no código pelo @ do GitHub de cada membro para carregar a foto e o link corretamente.
 
-| [<img src="[https://github.com/FernandoH498](https://github.com/FernandoH498).png" width=115><br><sub>Fernando Harmel</sub>](https://github.com/SEU_USUARIO_GITHUB) | [<img src="https://github.com/SEU_USUARIO_GITHUB.png" width=115><br><sub>Arthur Ayyub</sub>](https://github.com/SEU_USUARIO_GITHUB) | [<img src="https://github.com/SEU_USUARIO_GITHUB.png" width=115><br><sub>Arthur Krebs</sub>](https://github.com/SEU_USUARIO_GITHUB) | [<img src="https://github.com/SEU_USUARIO_GITHUB.png" width=115><br><sub>Larissa</sub>](https://github.com/SEU_USUARIO_GITHUB) | [<img src="https://github.com/SEU_USUARIO_GITHUB.png" width=115><br><sub>Victor Prim</sub>](https://github.com/SEU_USUARIO_GITHUB) |
+| [<img src="[https://github.com/FernandoH498](https://github.com/FernandoH498).png" width=115><br><sub>Fernando Harmel</sub>](https://github.com/FernandoH498) | [<img src="https://github.com/SEU_USUARIO_GITHUB.png" width=115><br><sub>Arthur Ayyub</sub>](https://github.com/SEU_USUARIO_GITHUB) | [<img src="https://github.com/SEU_USUARIO_GITHUB.png" width=115><br><sub>Arthur Krebs</sub>](https://github.com/SEU_USUARIO_GITHUB) | [<img src="https://github.com/SEU_USUARIO_GITHUB.png" width=115><br><sub>Larissa</sub>](https://github.com/SEU_USUARIO_GITHUB) | [<img src="https://github.com/SEU_USUARIO_GITHUB.png" width=115><br><sub>Victor Prim</sub>](https://github.com/SEU_USUARIO_GITHUB) |
 | :---: | :---: | :---: | :---: | :---: |
 
 ---
