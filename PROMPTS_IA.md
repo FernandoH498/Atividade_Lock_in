@@ -76,7 +76,7 @@ Modelo: Claude Sonnet 4.6
 - O código gerado foi revisado para garantir `PreparedStatement` em 100% das queries
 - O uso de IA está documentado de forma transparente neste arquivo
 
-   Uso 5 — Sistema de Login com Bloqueio e Painel Admin
+### Uso 3 — Sistema de Login com Bloqueio e Painel Admin
 
 **Data:** 16/05/2026  
 **Prompt enviado:**
@@ -90,7 +90,7 @@ Modelo: Claude Sonnet 4.6
 
 | Arquivo | Descrição |
 |---------|-----------|
-| `schema_v03.sql` | Tabelas `usuarios` e `admins` |
+| `schema_v02.sql` | Tabelas `usuarios` e `admins` |
 | `PasswordUtil.java` | Hash SHA-256 com salt aleatório |
 | `CodigoUtil.java` | Gerador de código numérico de 6 dígitos |
 | `Usuario.java` | Model do usuário |
