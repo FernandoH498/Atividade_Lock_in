@@ -69,6 +69,67 @@ Modelo: Claude Sonnet 4.6
 
 ---
 
+---
+
+## Sprint 2 — Marco v0.2 (Semana 2)
+
+### Uso 3 — Upload de Foto e Marcar como Devolvido
+
+**Data:** 07/05/2026  
+**Prompt enviado:**
+
+> Estamos na versão 0.2 do projeto. Preciso adicionar: (1) upload de foto opcional no cadastro de item — o arquivo deve ser salvo no servidor com nome UUID, validar extensão e tamanho máximo de 5 MB; (2) funcionalidade de "Marcar como Devolvido" na listagem — botão por card que faz POST e atualiza o status no banco; (3) filtro por categoria na barra de filtros; (4) contadores de itens no hero. Mantenha 100% PreparedStatement e a arquitetura model→dao→service→servlet.
+
+**Artefatos gerados / modificados pela IA:**
+
+| Arquivo | Mudança |
+|---------|---------|
+| `schema_v02.sql` | Novo — migração `ALTER TABLE itens ADD COLUMN foto_path` |
+| `ItemCreateServlet.java` | Adicionado `@MultipartConfig`, lógica de upload com UUID |
+| `ItemUpdateServlet.java` | Novo — `POST /itens/devolver` |
+| `ItemService.java` | Novos métodos: `devolverItem()`, `isExtensaoImagemValida()` |
+| `ItemDAO.java` | Novo método `updateStatus()`, parâmetro `categoria` em `findAll()`, `foto_path` no `save()` e `mapRow()` |
+| `list.jsp` | Cards com foto/placeholder, badge overlay, botão devolver, hero stats, filtro categoria |
+| `form.jsp` | Área de upload com preview |
+| `main.js` | Funções `setupPhotoPreview()`, `showToast()`, `setupAlertAutoDismiss()` |
+
+**Revisão humana aplicada:**
+- Verificação do limite de tamanho de arquivo (5 MB cliente e servidor)
+- Confirmação de que o nome do arquivo salvo é sempre UUID (sem path traversal)
+- Teste do fluxo completo: upload → exibição no card → marcar como devolvido
+- Validação dos filtros combinados (status + categoria + busca)
+
+---
+
+### Uso 4 — Geração dos Entregáveis (Diagrama, MER, CRUD, Planilha, Telas)
+
+**Data:** 07/05/2026  
+**Prompt enviado:**
+
+> Nesse projeto preciso entregar: Diagrama de Classes, Modelo Entidade-Relacionamento, CRUD, Sheet, Imagem das telas. Consegue criar um zip para eu entregar isso?
+
+**Artefatos gerados pela IA:**
+
+| Arquivo | Descrição |
+|---------|-----------|
+| `gerar_entrega.py` | Script Python que gera todos os entregáveis automaticamente |
+| `entrega/1_diagrama_classes.png` | Diagrama UML com todas as camadas |
+| `entrega/2_modelo_er.png` | Modelo Entidade-Relacionamento |
+| `entrega/3_crud.png` | Documentação das operações CRUD com SQL |
+| `entrega/4_planilha.csv` | Planilha CSV com os dados de seed |
+| `entrega/4_planilha.png` | Planilha visual com os dados de seed |
+| `entrega/5a_tela_lista.png` | Mockup da tela de listagem |
+| `entrega/5b_tela_formulario.png` | Mockup do formulário de cadastro |
+| `entrega/5c_tela_erro.png` | Mockup da tela de erro |
+| `entrega_lock_in.zip` | Pacote final com todos os entregáveis |
+
+**Revisão humana aplicada:**
+- Verificação do conteúdo de cada imagem gerada
+- Confirmação de que o diagrama reflete as classes reais do projeto
+- Validação dos dados da planilha contra o `seed.sql`
+
+---
+
 ## Considerações Éticas
 
 - Nenhum dado pessoal foi fornecido à IA durante os prompts
