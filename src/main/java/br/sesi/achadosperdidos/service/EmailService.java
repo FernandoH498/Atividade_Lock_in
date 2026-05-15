@@ -1,11 +1,9 @@
 package br.sesi.achadosperdidos.service;
 
-import br.sesi.achadosperdidos.dao.ConnectionFactory;
+import br.sesi.achadosperdidos.util.AppConfig;
 
 import javax.mail.*;
 import javax.mail.internet.*;
-import java.io.IOException;
-import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.util.Properties;
 
@@ -18,18 +16,11 @@ public class EmailService {
     private final String fromName;
 
     public EmailService() {
-        Properties cfg = new Properties();
-        try (InputStream in = ConnectionFactory.class.getClassLoader()
-                .getResourceAsStream("config.properties")) {
-            if (in != null) cfg.load(in);
-        } catch (IOException e) {
-            throw new RuntimeException("Falha ao carregar config.properties", e);
-        }
-        host = cfg.getProperty("mail.smtp.host", "smtp.gmail.com");
-        port = Integer.parseInt(cfg.getProperty("mail.smtp.port", "587"));
-        user = cfg.getProperty("mail.smtp.user", "");
-        password = cfg.getProperty("mail.smtp.password", "");
-        fromName = cfg.getProperty("mail.from.name", "Achados e Perdidos SESI");
+        host     = AppConfig.getMailSmtpHost();
+        port     = AppConfig.getMailSmtpPort();
+        user     = AppConfig.getMailUser();
+        password = AppConfig.getMailPassword();
+        fromName = AppConfig.getMailFromName();
     }
 
     public void enviarCodigoVerificacao(String toEmail, String nomeUsuario, String codigo) throws MessagingException, UnsupportedEncodingException {
