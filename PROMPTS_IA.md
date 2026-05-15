@@ -75,3 +75,47 @@ Modelo: Claude Sonnet 4.6
 - Os dados de seed gerados são completamente fictícios (conformidade ECA/LGPD)
 - O código gerado foi revisado para garantir `PreparedStatement` em 100% das queries
 - O uso de IA está documentado de forma transparente neste arquivo
+
+   Uso 5 — Sistema de Login com Bloqueio e Painel Admin
+
+**Data:** 16/05/2026  
+**Prompt enviado:**
+
+> Primeira coisa: Implementar um sistema de login com nome de usuario email e senha
+> forte alem de uma verificação de email por código se voce com uma conta já criada
+> errar 3 vezes a senha ela sera bloqueada alem disso foi criada um login de adm que
+> pode desbloquear as contas.
+
+**Artefatos gerados pela IA:**
+
+| Arquivo | Descrição |
+|---------|-----------|
+| `schema_v03.sql` | Tabelas `usuarios` e `admins` |
+| `PasswordUtil.java` | Hash SHA-256 com salt aleatório |
+| `CodigoUtil.java` | Gerador de código numérico de 6 dígitos |
+| `Usuario.java` | Model do usuário |
+| `Admin.java` | Model do administrador |
+| `UsuarioDAO.java` | Acesso ao banco: save, findByEmail, bloquear, desbloquear, incrementarTentativas |
+| `AdminDAO.java` | Acesso ao banco: findByEmail (admin) |
+| `UsuarioService.java` | Regras: validação de senha forte, bloqueio na 3ª tentativa, verificação de código |
+| `AdminService.java` | Autenticação do administrador |
+| `EmailService.java` | Envio de código de verificação via JavaMail/SMTP |
+| `AuthFilter.java` | Protege `/itens/*` — redireciona para login se sem sessão |
+| `AdminAuthFilter.java` | Protege `/admin/*` — redireciona para admin/login se sem sessão |
+| `CadastroServlet.java` | `GET/POST /cadastro` |
+| `LoginServlet.java` | `GET/POST /login` |
+| `LogoutServlet.java` | `GET /logout` — invalida sessão |
+| `VerificacaoEmailServlet.java` | `GET/POST /verificar-email` |
+| `AdminLoginServlet.java` | `GET/POST /admin/login` |
+| `AdminDashboardServlet.java` | `GET/POST /admin` — lista bloqueados e desbloqueia |
+| `cadastro.jsp` | Tela de cadastro |
+| `verificacao-email.jsp` | Tela de inserção do código |
+| `login.jsp` | Tela de login |
+| `admin/login.jsp` | Tela de login do administrador |
+| `admin/dashboard.jsp` | Painel com lista de contas bloqueadas |
+
+**Revisão humana aplicada:**
+- Verificação do regex de senha forte (maiúscula, minúscula, número, símbolo, mín. 8 chars)
+- Confirmação do limite de 3 tentativas antes do bloqueio
+- Validação do fluxo completo: cadastro → verificação de e-mail → login → bloqueio → desbloqueio admin
+- Teste das credenciais do admin no banco antes do deploy
