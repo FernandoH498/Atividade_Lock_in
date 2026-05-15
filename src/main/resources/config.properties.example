@@ -6,7 +6,6 @@ db.password=SUA_SENHA
 # Ativar: myaccount.google.com → Seguranca → Verificacao em 2 etapas → Senhas de app
 mail.smtp.host=smtp.gmail.com
 mail.smtp.port=587
-// Exemplo simples de como o Java busca a variável de ambiente ou o arquivo
-String email = System.getenv("MAIL_USER") != null ? 
-               System.getenv("MAIL_USER") : 
-               prop.getProperty("mail.smtp.user");
+mail.smtp.user=seuemail@gmail.com
+mail.smtp.password=nbar "senha de app da conta do google"
+mail.from.name= Achados e Perdidos Equipe Lock In
