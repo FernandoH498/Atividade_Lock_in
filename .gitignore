@@ -1,0 +1,18 @@
+# Configuração sensível — NUNCA commitar
+src/main/resources/config.properties
+
+# Build Maven
+target/
+
+# IDEs
+.idea/
+*.iml
+.classpath
+.project
+.settings/
+*.launch
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
