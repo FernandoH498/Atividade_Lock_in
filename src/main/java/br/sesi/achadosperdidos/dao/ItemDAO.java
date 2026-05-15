@@ -91,6 +91,22 @@ public class ItemDAO {
         }
     }
 
+    public void update(Item item) throws SQLException {
+        String sql = "UPDATE itens SET descricao=?, categoria=?, local_encontrado=?, " +
+                     "data_encontrado=?, status=?, observacoes=? WHERE id=?";
+        try (Connection conn = ConnectionFactory.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, item.getDescricao());
+            ps.setString(2, item.getCategoria());
+            ps.setString(3, item.getLocalEncontrado());
+            ps.setDate(4, Date.valueOf(item.getDataEncontrado()));
+            ps.setString(5, item.getStatus());
+            ps.setString(6, item.getObservacoes());
+            ps.setInt(7, item.getId());
+            ps.executeUpdate();
+        }
+    }
+
     public void delete(int id) throws SQLException {
         String sql = "DELETE FROM itens WHERE id = ?";
         try (Connection conn = ConnectionFactory.getConnection();

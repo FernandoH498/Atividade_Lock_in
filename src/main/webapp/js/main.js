@@ -2,7 +2,7 @@
    Achados & Perdidos — SESI Blumenau | v0.2
    ============================================================ */
 
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function() {
     setDateInputMax();
     setupCharCounter();
     setupPhotoPreview();
@@ -17,7 +17,7 @@ function setDateInputMax() {
 }
 
 function setupCharCounter() {
-    var ta  = document.getElementById('observacoes');
+    var ta = document.getElementById('observacoes');
     var ctr = document.getElementById('charCounter');
     if (!ta || !ctr) return;
     function update() {
@@ -31,13 +31,13 @@ function setupCharCounter() {
 
 /* ── Photo preview ────────────────────────────────────────── */
 function setupPhotoPreview() {
-    var input   = document.getElementById('foto');
+    var input = document.getElementById('foto');
     var preview = document.getElementById('fotoPreview');
-    var area    = document.getElementById('photoUploadArea');
-    var holder  = document.getElementById('photoPlaceholder');
+    var area = document.getElementById('photoUploadArea');
+    var holder = document.getElementById('photoPlaceholder');
     if (!input || !preview || !area) return;
 
-    input.addEventListener('change', function () {
+    input.addEventListener('change', function() {
         var file = this.files[0];
         if (!file) return;
         if (!file.type.startsWith('image/')) {
@@ -51,7 +51,7 @@ function setupPhotoPreview() {
             return;
         }
         var reader = new FileReader();
-        reader.onload = function (e) {
+        reader.onload = function(e) {
             preview.src = e.target.result;
             preview.style.display = 'block';
             if (holder) holder.style.display = 'none';
@@ -63,18 +63,18 @@ function setupPhotoPreview() {
 
 /* ── AI category suggestion ──────────────────────────────── */
 var CATEGORY_KEYWORDS = {
-    'ELETRÔNICOS': ['celular','phone','fone','headphone','headset','carregador',
-                    'notebook','tablet','câmera','camera','teclado','mouse',
-                    'pendrive','cabo','computador','bateria','fio'],
-    'DOCUMENTOS':  ['carteira','rg','cpf','documento','identidade','cartão',
-                    'passaporte','habilitação','cnh','boleto','registro'],
-    'ROUPAS':      ['casaco','jaqueta','blusa','camiseta','calça','tênis',
-                    'sapato','sandália','boné','chapéu','uniforme','meias',
-                    'bermuda','vestido'],
-    'ACESSÓRIOS':  ['mochila','bolsa','cinto','relógio','pulseira','colar',
-                    'brinco','anel','guarda-chuva','garrafa','óculos','oculos',
-                    'estojo','cartucheira'],
-    'OUTROS':      []
+    'ELETRÔNICOS': ['celular', 'phone', 'fone', 'headphone', 'headset', 'carregador',
+        'notebook', 'tablet', 'câmera', 'camera', 'teclado', 'mouse',
+        'pendrive', 'cabo', 'computador', 'bateria', 'fio'],
+    'DOCUMENTOS': ['carteira', 'rg', 'cpf', 'documento', 'identidade', 'cartão',
+        'passaporte', 'habilitação', 'cnh', 'boleto', 'registro'],
+    'ROUPAS': ['casaco', 'jaqueta', 'blusa', 'camiseta', 'calça', 'tênis',
+        'sapato', 'sandália', 'boné', 'chapéu', 'uniforme', 'meias',
+        'bermuda', 'vestido'],
+    'ACESSÓRIOS': ['mochila', 'bolsa', 'cinto', 'relógio', 'pulseira', 'colar',
+        'brinco', 'anel', 'guarda-chuva', 'garrafa', 'óculos', 'oculos',
+        'estojo', 'cartucheira'],
+    'OUTROS': []
 };
 
 function suggestCategory(desc) {
@@ -82,7 +82,7 @@ function suggestCategory(desc) {
     for (var cat in CATEGORY_KEYWORDS) {
         if (cat === 'OUTROS') continue;
         var kws = CATEGORY_KEYWORDS[cat];
-        for (var i = 0; i < kws.length; i++) {
+        for (var i = 0;i < kws.length;i++) {
             if (lower.indexOf(kws[i]) !== -1) return cat;
         }
     }
@@ -90,19 +90,19 @@ function suggestCategory(desc) {
 }
 
 function setupAISuggestion() {
-    var descInput   = document.getElementById('descricao');
-    var aiPanel     = document.getElementById('aiPanel');
-    var aiText      = document.getElementById('aiSuggestionText');
+    var descInput = document.getElementById('descricao');
+    var aiPanel = document.getElementById('aiPanel');
+    var aiText = document.getElementById('aiSuggestionText');
     var aiAcceptBtn = document.getElementById('aiAccept');
-    var catSelect   = document.getElementById('categoria');
+    var catSelect = document.getElementById('categoria');
     if (!descInput || !aiPanel) return;
 
     var timer;
-    descInput.addEventListener('input', function () {
+    descInput.addEventListener('input', function() {
         clearTimeout(timer);
         var val = this.value.trim();
         if (val.length < 4) { aiPanel.classList.remove('visible'); return; }
-        timer = setTimeout(function () {
+        timer = setTimeout(function() {
             var s = suggestCategory(val);
             if (s) {
                 aiText.innerHTML = 'Categoria sugerida: <strong>' + s + '</strong>';
@@ -114,7 +114,7 @@ function setupAISuggestion() {
     });
 
     if (aiAcceptBtn && catSelect) {
-        aiAcceptBtn.addEventListener('click', function () {
+        aiAcceptBtn.addEventListener('click', function() {
             var s = suggestCategory(descInput.value.trim());
             if (s) { catSelect.value = s; aiPanel.classList.remove('visible'); showToast('Sugestão aceita: ' + s); }
         });
@@ -125,9 +125,9 @@ function setupAISuggestion() {
 function setupFormValidation() {
     var form = document.getElementById('itemForm');
     if (!form) return;
-    form.addEventListener('submit', function (e) {
+    form.addEventListener('submit', function(e) {
         var valid = true;
-        ['descricao','categoria','localEncontrado','dataEncontrado'].forEach(function (name) {
+        ['descricao', 'categoria', 'localEncontrado', 'dataEncontrado'].forEach(function(name) {
             var el = document.getElementById(name);
             if (!el) return;
             if (!el.value || !el.value.trim()) { markError(el, 'Campo obrigatório.'); valid = false; }
@@ -136,8 +136,8 @@ function setupFormValidation() {
         var dateEl = document.getElementById('dataEncontrado');
         if (dateEl && dateEl.value) {
             var p = dateEl.value.split('-');
-            var sel = new Date(+p[0], +p[1]-1, +p[2]);
-            var today = new Date(); today.setHours(23,59,59,999);
+            var sel = new Date(+p[0], +p[1] - 1, +p[2]);
+            var today = new Date(); today.setHours(23, 59, 59, 999);
             if (sel > today) { markError(dateEl, 'A data não pode ser no futuro.'); valid = false; }
         }
         if (!valid) e.preventDefault();
@@ -162,11 +162,11 @@ function clearError(el) {
 
 /* ── Auto-dismiss alerts ─────────────────────────────────── */
 function setupAlertAutoDismiss() {
-    document.querySelectorAll('.alert').forEach(function (a) {
-        setTimeout(function () {
+    document.querySelectorAll('.alert').forEach(function(a) {
+        setTimeout(function() {
             a.style.transition = 'opacity .4s';
             a.style.opacity = '0';
-            setTimeout(function () { a.remove(); }, 450);
+            setTimeout(function() { a.remove(); }, 450);
         }, 5000);
     });
 }
@@ -178,8 +178,8 @@ function showToast(message, isError) {
     t.style.cssText = 'position:fixed;bottom:24px;right:24px;z-index:9999;min-width:220px;animation:fadeIn .25s ease;box-shadow:0 8px 30px rgba(0,0,0,.15)';
     t.textContent = message;
     document.body.appendChild(t);
-    setTimeout(function () {
+    setTimeout(function() {
         t.style.transition = 'opacity .4s'; t.style.opacity = '0';
-        setTimeout(function () { t.remove(); }, 450);
+        setTimeout(function() { t.remove(); }, 450);
     }, 3000);
 }
