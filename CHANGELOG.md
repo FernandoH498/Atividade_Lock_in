@@ -8,8 +8,8 @@ Todas as mudanças notáveis neste projeto estão documentadas aqui.
 ### Adicionado
 
 #### Banco de Dados
-- **`schema_v03.sql`** *(novo)* — tabela `usuarios` com campos de autenticação e controle de bloqueio
-- **`schema_v03.sql`** *(novo)* — tabela `admins` para acesso administrativo
+- **`schema_v02.sql`** *(novo)* — tabela `usuarios` com campos de autenticação e controle de bloqueio
+- **`schema_v02.sql`** *(novo)* — tabela `admins` para acesso administrativo
 
 #### Autenticação
 - **`PasswordUtil`** *(novo)* — hash de senha com SHA-256 + salt aleatório (sem dependência externa)
