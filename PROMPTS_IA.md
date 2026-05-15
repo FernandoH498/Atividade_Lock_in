@@ -11,8 +11,6 @@ Modelo: Claude Sonnet 4.6
 
 ---
 
-## Sprint 1 — Marco v0.1 (Semana 1)
-
 ### Uso 1 — Geração da Estrutura Completa do Projeto
 
 **Data:** 07/05/2026  
